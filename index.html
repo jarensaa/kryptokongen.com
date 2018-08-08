@@ -2,6 +2,11 @@
 <html lang="en">
 
 <head>
+    <style type="text/css">
+        [v-cloak] {
+            display: none;
+        }
+    </style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -11,10 +16,10 @@
 </head>
 
 <body>
-    <div id="app">
+    <div id="app" v-cloak>
         <div class="header-wrapper">
             <div class="header">
-                <img v-on:click="refreshText" class="button" v-bind:class="{hideRefreshButton: !showRefreshButton}" src="baseline-refresh-24px.svg">
+                <img v-cloak v-on:click="refreshText" class="button" v-bind:class="{hideRefreshButton: !showRefreshButton}" src="baseline-refresh-24px.svg">
             </div>
         </div>
         <div class="text-wrapper">
