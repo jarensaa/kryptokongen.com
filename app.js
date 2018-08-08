@@ -1,12 +1,18 @@
 var app = new Vue({
     el: '#app',
     data: {
-        text: 'Hva er dette da?',
+        text: 'Hvem er kryptokongen?',
         showLastCharacter: true,
         activeTransition: false,
+        showRefreshButton: false,
     },
     created: function () {
-        setInterval(this.logger, 500)
+        setInterval(this.logger, 500);
+        setTimeout(
+            function () {
+                app.refreshText()
+            }, 3000
+        )
     },
     methods: {
         logger: function () {
@@ -28,10 +34,11 @@ var app = new Vue({
             this.showLastCharacter = !this.showLastCharacter
         },
         refreshText() {
-            word = this.getRandomText();
-            this.activeTransition = true;
-
-            this.slowAddText(this.text, word);
+            if (!this.activeTransition) {
+                let word = this.getRandomText();
+                this.activeTransition = true;
+                this.slowAddText(this.text, word);
+            }
         },
         slowAddText(oldtext, newtext) {
             if (oldtext.length > 0) {
@@ -47,24 +54,23 @@ var app = new Vue({
                 if (app.text.length === 0) pausetime = 500;
                 setTimeout(
                     function () {
+                        app.text = app.text + newtext.charAt(0);
+                        newtext = newtext.substr(1);
                         if (newtext.length === 0) {
-                            this.activeTransition = false;
+                            app.activeTransition = false;
+                            app.showRefreshButton = true;
                         } else {
-                            app.text = app.text + newtext.charAt(0);
-                            newtext = newtext.substr(1);
                             app.slowAddText(oldtext, newtext);
                         }
-
                     }, pausetime
                 )
             }
         },
         getRandomText() {
-            return "kryptokongen 2"
-            if (Math.random > 0.5) {
-                return "langt ord 1"
+            if (Math.random() > 0.25) {
+                return "Been"
             } else {
-                return "langt ord 2"
+                return "Jens"
             }
         }
     }

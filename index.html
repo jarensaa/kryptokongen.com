@@ -13,8 +13,8 @@
 <body>
     <div id="app">
         <div class="header-wrapper">
-            <div class="header" v-on:click="refreshText">
-                <img src="baseline-refresh-24px.svg">
+            <div class="header">
+                <img v-on:click="refreshText" class="button" v-bind:class="{hideRefreshButton: !showRefreshButton}" src="baseline-refresh-24px.svg">
             </div>
         </div>
         <div class="text-wrapper">
@@ -25,8 +25,7 @@
                 <a class="cursor" v-bind:class="{showCharacter: showLastCharacter}">_</a>
             </div>
         </div>
-        <!-- <script src="vue.min.js"></script>-->
-        <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+        <script src="vue.min.js"></script>
         <script src="app.js"></script>
 </body>
 

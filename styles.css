@@ -24,8 +24,13 @@ html, body {
     height: 70%;
 }
 
-@media screen and (min-width: 600px) and (max-width: 1000px){
+@media screen and (max-width: 350px) {
+    .text.override {
+        font-size: 20px;
+    }
+}
 
+@media screen and (min-width: 600px) and (max-width: 1000px){
     .text.override {
         font-size: 40px;
     }
@@ -38,14 +43,16 @@ html, body {
 }
 
 .text {
-    font-size: 30px;
+    font-size: 25px;
     font-family: montserrat;
     font-weight: 800;
 }
 
 img {
-    width: 30px;
-    height: 30px;
+    margin-right: 20px;
+    margin-top: 20px;
+    width: 40px;
+    height: 40px;
 }
 
 img:hover {
@@ -58,6 +65,21 @@ img:hover {
 
 .showCharacter {
     animation: 0.5s blinker;
+}
+
+.button.hideRefreshButton{
+    pointer-events: none;
+    opacity: 0;
+}
+
+.button:not(.hideRefreshButton){
+    animation: 2s fadein;
+}
+
+
+@keyframes fadein {
+    from {opacity: 0;}
+    to {opacity: 1;}
 }
 
 @keyframes blinker {
