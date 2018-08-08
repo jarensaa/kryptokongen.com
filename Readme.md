@@ -1,4 +1,4 @@
-Webpage for [kryptokongen.com](kryptokongen.com)
+Webpage for [kryptokongen.com](http://kryptokongen.com)
 
 ## Motivation
 
