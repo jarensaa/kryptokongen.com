@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div id="app">
+        <div class="header-wrapper">
+            <div class="header" v-on:click="refreshText">
+                <img src="baseline-refresh-24px.svg">
+            </div>
+        </div>
+        <div class="text-wrapper">
+            <div class="text override">
+                <a>
+                    {{text}}
+                </a>
+                <a class="cursor" v-bind:class="{showCharacter: showLastCharacter}">_</a>
+            </div>
+        </div>
+        <!-- <script src="vue.min.js"></script>-->
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+        <script src="app.js"></script>
+</body>
+
+</html>
