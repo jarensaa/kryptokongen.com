@@ -11,4 +11,4 @@ Frontend for [kryptokongen.com](http://kryptokongen.com)
 * AWS Lambda
 
 ## Motivation
-Based off an interest to learn Vue.js and serverless architecture, i decided to build a very simple web-app with a simple api. The web-app is very over-engineered when it comes to infrastructure. Static files are stored on S3 and distributed with Cloudfront. The api is constructed with API-gateway, which forwards requests to api.kryptokongen.com to lambda functions based on the specified path.
+Based off an interest to learn Vue.js and serverless architecture, i decided to build a very simple web-app and api. The web-app is very over-engineered when it comes to infrastructure. Static files are stored on S3 and distributed with Cloudfront. The api is constructed with API-gateway, which forwards requests to api.kryptokongen.com to lambda functions based on the specified path.
