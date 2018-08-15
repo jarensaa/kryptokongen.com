@@ -1,4 +1,4 @@
-Webpage for [kryptokongen.com](http://kryptokongen.com)
+Frontend for [kryptokongen.com](http://kryptokongen.com)
 
 ## Frontend
 * Vue.js
