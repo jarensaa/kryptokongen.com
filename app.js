@@ -2,45 +2,29 @@ var app = new Vue({
     el: '#app',
     data: {
         text: 'Hvem er kryptokongen?',
-        showLastCharacter: true,
-        activeTransition: false,
+        nextText: '',
         showRefreshButton: false,
+        activeTextTransition: true,
+        showUnderscoreBlinkingAnimation: true,
     },
     created: function () {
-        setInterval(this.logger, 500);
-        setTimeout(
-            function () {
-                app.refreshText()
-            }, 3000
-        )
+        this.getNextTextFromServer();
+        setTimeout(() => app.refreshText(), 3000)
     },
     methods: {
-        logger: function () {
-            let actionPerformed = false;
-            if (!this.showLastCharacter && !actionPerformed) {
-                this.showLastCharacter = !this.showLastCharacter;
-                actionPerformed = true;
+        pressRefreshButton() {
+            if (!this.activeTextTransition) {
+                this.refreshText();
             }
-            if (this.activeTransition && !actionPerformed) {
-                actionPerformed = true;
-            }
-
-            if (!actionPerformed) {
-                this.showLastCharacter = !this.showLastCharacter;
-            }
-        },
-
-        toggleAnimation: function () {
-            this.showLastCharacter = !this.showLastCharacter
         },
         refreshText() {
-            if (!this.activeTransition) {
-                let word = this.getRandomText();
-                this.activeTransition = true;
-                this.slowAddText(this.text, word);
-            }
+            const word = this.nextText;
+            this.getNextTextFromServer();
+            this.slowAddText(this.text, word);
         },
         slowAddText(oldtext, newtext) {
+            this.showUnderscoreBlinkingAnimation = false;
+            this.activeTextTransition = true;
             if (oldtext.length > 0) {
                 setTimeout(
                     function () {
@@ -57,7 +41,8 @@ var app = new Vue({
                         app.text = app.text + newtext.charAt(0);
                         newtext = newtext.substr(1);
                         if (newtext.length === 0) {
-                            app.activeTransition = false;
+                            app.showUnderscoreBlinkingAnimation = true;
+                            app.activeTextTransition = false;
                             app.showRefreshButton = true;
                         } else {
                             app.slowAddText(oldtext, newtext);
@@ -66,12 +51,10 @@ var app = new Vue({
                 )
             }
         },
-        getRandomText() {
-            if (Math.random() > 0.25) {
-                return "Been"
-            } else {
-                return "Jens"
-            }
+        async getNextTextFromServer() {
+            const response = await fetch("https://api.kryptokongen.com/string")
+            const json = await response.json();
+            this.nextText = json;
         }
     }
 })

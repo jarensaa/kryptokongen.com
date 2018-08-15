@@ -63,8 +63,8 @@ img:hover {
     margin-left: -5px;
 }
 
-.showCharacter {
-    animation: 0.5s blinker;
+.showBlinkingAnimation {
+    animation: 1s blinker infinite;
 }
 
 .button.hideRefreshButton{
@@ -86,7 +86,10 @@ img:hover {
     from,to {
         opacity: 1;
     }
-    50% {
+    60% {
+        opacity: 1;
+    }
+    30% {
         opacity: 0;
     }
 }

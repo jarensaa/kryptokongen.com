@@ -19,7 +19,7 @@
     <div id="app" v-cloak>
         <div class="header-wrapper">
             <div class="header">
-                <img v-cloak v-on:click="refreshText" class="button" v-bind:class="{hideRefreshButton: !showRefreshButton}" src="baseline-refresh-24px.svg">
+                <img v-cloak v-on:click="pressRefreshButton" class="button" v-bind:class="{hideRefreshButton: !showRefreshButton}" src="baseline-refresh-24px.svg">
             </div>
         </div>
         <div class="text-wrapper">
@@ -27,7 +27,7 @@
                 <a>
                     {{text}}
                 </a>
-                <a class="cursor" v-bind:class="{showCharacter: showLastCharacter}">_</a>
+                <a class="cursor" v-bind:class="{showBlinkingAnimation: showUnderscoreBlinkingAnimation}">_</a>
             </div>
         </div>
         <script src="vue.min.js"></script>
